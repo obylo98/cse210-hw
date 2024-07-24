@@ -1,20 +1,25 @@
 public class Product
 {
-    public string Name { get; set; }
-    public string ProductId { get; set; }
-    public double Price { get; set; }
-    public int Quantity { get; set; }
+    private string _name;
+    private string _productId;
+    private decimal _price;
+    private int _quantity;
 
-    public Product(string name, string productId, double price, int quantity)
+    public Product(string name, string productId, decimal price, int quantity)
     {
-        Name = name;
-        ProductId = productId;
-        Price = price;
-        Quantity = quantity;
+        _name = name;
+        _productId = productId;
+        _price = price;
+        _quantity = quantity;
     }
 
-    public double GetTotalCost()
+    public string Name => _name;
+    public string ProductId => _productId;
+    public decimal Price => _price;
+    public int Quantity => _quantity;
+
+    public decimal GetTotalCost()
     {
-        return Price * Quantity;
+        return _price * _quantity;
     }
 }

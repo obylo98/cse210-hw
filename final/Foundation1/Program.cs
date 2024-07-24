@@ -1,47 +1,39 @@
 using System;
 using System.Collections.Generic;
 
-namespace Program1
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            List<Video> videos = new List<Video>
-            {
-                new Video
-                {
-                    Title = "Video 1",
-                    Author = "Author 1",
-                    Length = 120,
-                    Comments = new List<Comment>
-                    {
-                        new Comment { CommenterName = "User1", Text = "Great video!" },
-                        new Comment { CommenterName = "User2", Text = "Thanks for sharing." }
-                    }
-                },
-                new Video
-                {
-                    Title = "Video 2",
-                    Author = "Author 2",
-                    Length = 240,
-                    Comments = new List<Comment>
-                    {
-                        new Comment { CommenterName = "User3", Text = "Very informative." },
-                        new Comment { CommenterName = "User4", Text = "Loved it!" }
-                    }
-                }
-            };
+        Video video1 = new Video("Learning C#", "John Doe", 300);
+        video1.AddComment(new Comment("Alice", "Great video!"));
+        video1.AddComment(new Comment("Bob", "Very helpful, thanks!"));
+        video1.AddComment(new Comment("Charlie", "I learned a lot!"));
 
-            foreach (var video in videos)
+        Video video2 = new Video("Understanding OOP", "Jane Smith", 450);
+        video2.AddComment(new Comment("Dave", "Excellent explanation!"));
+        video2.AddComment(new Comment("Eve", "Well done!"));
+        video2.AddComment(new Comment("Frank", "Could you make a follow-up video?"));
+
+        Video video3 = new Video("Mastering Design Patterns", "Jim Brown", 600);
+        video3.AddComment(new Comment("Grace", "This is gold!"));
+        video3.AddComment(new Comment("Heidi", "Thank you for this!"));
+        video3.AddComment(new Comment("Ivan", "Best tutorial ever!"));
+
+        List<Video> videos = new List<Video> { video1, video2, video3 };
+
+        foreach (var video in videos)
+        {
+            Console.WriteLine($"Title: {video.Title}");
+            Console.WriteLine($"Author: {video.Author}");
+            Console.WriteLine($"Length: {video.Length} seconds");
+            Console.WriteLine($"Number of Comments: {video.GetNumberOfComments()}");
+            Console.WriteLine("Comments:");
+            foreach (var comment in video.GetComments())
             {
-                Console.WriteLine($"Title: {video.Title}, Author: {video.Author}, Length: {video.Length} seconds, Comments: {video.GetNumberOfComments()}");
-                foreach (var comment in video.Comments)
-                {
-                    Console.WriteLine($"- {comment.CommenterName}: {comment.Text}");
-                }
-                Console.WriteLine();
+                Console.WriteLine($"- {comment.Name}: {comment.Text}");
             }
+            Console.WriteLine();
         }
     }
 }

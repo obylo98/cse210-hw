@@ -1,8 +1,11 @@
-namespace Program1
+public class Comment
 {
-    public class Comment
+    public string Name { get; set; }
+    public string Text { get; set; }
+
+    public Comment(string name, string text)
     {
-        public string CommenterName { get; set; }
-        public string Text { get; set; }
+        Name = name;
+        Text = text;
     }
 }
